@@ -220,7 +220,7 @@ let command_exists ?(env=default_env) name =
   let cmd, args = match OpamGlobals.os () with
     | NetBSD
     | DragonFly ->
-      "sh", ["-c"; Printf.sprintf "type %s 1>/dev/null 2/dev/null" name]
+      "sh", ["-c"; Printf.sprintf "type %s 1>/dev/null 2>/dev/null" name]
     | _         ->
       "which", [name] in
   let r = OpamProcess.run ~env ~name:(temp_file "which") ~verbose:false cmd args in
